@@ -7,8 +7,12 @@ const users = sequelize.define("users", {
     password: {type: DataTypes.STRING, allowNull: false},
     full_name: {type: DataTypes.STRING, allowNull: false},
     position: {type: DataTypes.STRING, allowNull: false},
-    avatar: {type: DataTypes.STRING, defaultValue: null},
 });
+
+const usersImage = sequelize.define(`users_image`, {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    avatar: {type: DataTypes.STRING, defaultValue: null},
+})
 
 const progress = sequelize.define("progress", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
@@ -63,11 +67,13 @@ const fourthBook = sequelize.define("fourth_book", {
     page_message: {type: DataTypes.STRING, defaultValue: null},
 })
 
-users.hasOne(progress);
+users.hasOne(progress, usersImage);
 progress.belongsTo(users);
+usersImage.belongsTo(users);
 
 module.exports = {
     users,
+    usersImage,
     progress,
     firstBook,
     secondBook,
