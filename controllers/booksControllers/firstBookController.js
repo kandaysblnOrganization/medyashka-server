@@ -2,7 +2,6 @@ const {
     firstBook
 } = require('../../models/models');
 const ApiError = require('../../errors/ApiErrors');
-const {max} = require("pg/lib/defaults");
 
 class FirstBookController {
     getBook = async (req, res, next) => {

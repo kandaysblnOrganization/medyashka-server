@@ -3,7 +3,7 @@ const usersControllers = require('./usersControllers/usersControllers');
 const progressControllers = require('./usersControllers/progressControllers');
 const usersImagesControllers = require('./usersControllers/usersImageControllers');
 
-//BOOKS CONTROLLER
+//BOOKS CONTROLLERS
 const firstBookControllers = require('./booksControllers/firstBookController');
 const secondBookControllers = require('./booksControllers/secondBookController');
 const thirdBookControllers = require('./booksControllers/thirdBookController');
