@@ -1,7 +1,7 @@
 const Router = require('express');
 const router = new Router();
 
-const usersRouter = require('./usersRouter');
+const usersRouter = require('./usersRouters/usersRouter');
 
 router.use('/users', usersRouter);
 
