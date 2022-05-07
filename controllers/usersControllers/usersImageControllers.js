@@ -15,7 +15,7 @@ class UsersImageControllers {
         const userImage = await usersImage.findOne({where: {userId}})
             .then(res => {
                 if (!res) {
-                    return ApiError.badRequest('Данные об изображении не найдены');
+                    return next(ApiError.badRequest('Данные об изображении не найдены'));
                 }
 
                 return res.update({avatar: fileName})

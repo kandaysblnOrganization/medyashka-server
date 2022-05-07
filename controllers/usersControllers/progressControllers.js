@@ -17,25 +17,21 @@ class ProgressControllers {
             fourth_book_last_page,
         } = req.body;
 
-        //Блок для расчета процента прогресса
-        const firstBookTotalPage = await firstBook.count();
-        const secondBookTotalPage = await secondBook.count();
-        const thirdBookTotalPage = await thirdBook.count();
-        const fourthBookTotalPage = await fourthBook.count();
+        //Блок для расчета процента прогресса------------------------------------------------------------------------------
+        const firstBookTotalPage = await firstBook.count({col: "id"});
+        const secondBookTotalPage = await secondBook.count({col: "id"});
+        const thirdBookTotalPage = await thirdBook.count({col: "id"});
+        const fourthBookTotalPage = await fourthBook.count({col: "id"});
         const totalPage = +firstBookTotalPage + +secondBookTotalPage + +thirdBookTotalPage + +fourthBookTotalPage;
         const onePercent = totalPage / 100;
         const pagesRead = +first_book_last_page + +second_book_last_page + +third_book_last_page + +fourth_book_last_page;
         const percentProgress = +pagesRead / +onePercent;
-
-        console.log("firstBookTotalPage: ", firstBookTotalPage)
-        console.log("secondBookTotalPage: ", secondBookTotalPage)
-        console.log("thirdBookTotalPage: ", thirdBookTotalPage)
-        console.log("fourthBookTotalPage: ", fourthBookTotalPage);
+        //-------------------------------------------------------------------------------------------------------------------
 
         const progresses = await progress.findOne({where: {userId}})
             .then(res => {
                 if (!res) {
-                    return ApiError.badRequest('Данные о прогрессе не найдены');
+                    return next(ApiError.badRequest('Данные о прогрессе не найдены'));
                 }
                 const body = {
                     percent_progress: percentProgress,

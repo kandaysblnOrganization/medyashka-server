@@ -30,9 +30,8 @@ const firstBook = sequelize.define("first_books", {
     page_chapter: {type: DataTypes.STRING, defaultValue: null},
     page_title: {type: DataTypes.STRING, defaultValue: null},
     page_text: {type: DataTypes.TEXT, defaultValue: null},
-    page_img: {type: DataTypes.STRING, defaultValue: null},
     page_message: {type: DataTypes.TEXT, defaultValue: null},
-})
+}, {timestamps: false})
 
 const secondBook = sequelize.define("second_books", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
@@ -43,7 +42,7 @@ const secondBook = sequelize.define("second_books", {
     page_text: {type: DataTypes.TEXT, defaultValue: null},
     page_img: {type: DataTypes.STRING, defaultValue: null},
     page_message: {type: DataTypes.TEXT, defaultValue: null},
-})
+}, {timestamps: false})
 
 const thirdBook = sequelize.define("third_books", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
@@ -54,7 +53,7 @@ const thirdBook = sequelize.define("third_books", {
     page_text: {type: DataTypes.TEXT, defaultValue: null},
     page_img: {type: DataTypes.STRING, defaultValue: null},
     page_message: {type: DataTypes.TEXT, defaultValue: null},
-})
+}, {timestamps: false})
 
 const fourthBook = sequelize.define("fourth_books", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
@@ -65,7 +64,7 @@ const fourthBook = sequelize.define("fourth_books", {
     page_text: {type: DataTypes.TEXT, defaultValue: null},
     page_img: {type: DataTypes.STRING, defaultValue: null},
     page_message: {type: DataTypes.TEXT, defaultValue: null},
-})
+}, {timestamps: false})
 
 users.hasOne(usersImage);
 usersImage.belongsTo(users);

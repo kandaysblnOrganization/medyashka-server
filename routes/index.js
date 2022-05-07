@@ -1,12 +1,25 @@
 const Router = require('express');
 const router = new Router();
 
-const usersRouter = require('./usersRoutes/usersRouter');
-const progressRouter = require('./usersRoutes/progressRouter');
-const usersImageRouter = require('./usersRoutes/usersImageRouter');
+const {
+    usersRouter,
+    progressRouter,
+    usersImageRouter
+} = require('./usersRoutes');
+
+const {
+    firstBook,
+    secondBook,
+    thirdBook,
+    fourthBook
+} = require('./booksRoutes');
 
 router.use('/users', usersRouter);
 router.use('/progress', progressRouter);
 router.use('/user-image', usersImageRouter);
+router.use('/first_book', firstBook);
+router.use('/second_book', secondBook);
+router.use('/third_book', thirdBook);
+router.use('/fourth_book', fourthBook);
 
 module.exports = router;
