@@ -1,11 +1,11 @@
 const uuid = require("uuid");
-const ApiErrors = require('../errors/ApiErrors');
-const {users, progress,} = require('../models/models');
+const ApiErrors = require('../../errors/ApiErrors');
+const {users, progress,} = require('../../models/models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 
-class usersControllers {
+class UsersControllers {
     registration = async (req, res, next) => {
         const {email, password, full_name, position} = req.body;
         if (!email || !password) {
@@ -19,7 +19,7 @@ class usersControllers {
         const user = await users.create({email, password: hashPassword, full_name, position});
         const userProgress = await progress.create({userId: user.id});
         const token = jwt.sign(
-            {id: user.id, email},
+            {id: user.id, email, full_name, position},
             process.env.SECRET_KEY,
             {expiresIn: "24h"}
         );
@@ -38,4 +38,4 @@ class usersControllers {
     };
 }
 
-module.exports = new usersControllers();
+module.exports = new UsersControllers();

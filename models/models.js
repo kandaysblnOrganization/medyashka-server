@@ -16,7 +16,7 @@ const usersImage = sequelize.define(`users_image`, {
 
 const progress = sequelize.define("progress", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    percent_progress: {type: DataTypes.INTEGER, defaultValue: 0},
+    percent_progress: {type: DataTypes.DOUBLE, defaultValue: 0},
     first_book_last_page: {type: DataTypes.INTEGER, defaultValue: 1},
     second_book_last_page: {type: DataTypes.INTEGER, defaultValue: 1},
     third_book_last_page: {type: DataTypes.INTEGER, defaultValue: 1},
@@ -67,10 +67,11 @@ const fourthBook = sequelize.define("fourth_books", {
     page_message: {type: DataTypes.STRING, defaultValue: null},
 })
 
-users.hasOne(progress);
 users.hasOne(usersImage);
-progress.belongsTo(users);
 usersImage.belongsTo(users);
+
+users.hasOne(progress);
+progress.belongsTo(users);
 
 module.exports = {
     users,
