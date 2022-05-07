@@ -67,7 +67,8 @@ const fourthBook = sequelize.define("fourth_book", {
     page_message: {type: DataTypes.STRING, defaultValue: null},
 })
 
-users.hasOne(progress, usersImage);
+users.hasOne(progress);
+users.hasOne(usersImage);
 progress.belongsTo(users);
 usersImage.belongsTo(users);
 
