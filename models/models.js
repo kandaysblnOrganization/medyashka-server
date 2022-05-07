@@ -23,7 +23,7 @@ const progress = sequelize.define("progress", {
     fourth_book_last_page: {type: DataTypes.INTEGER, defaultValue: 1},
 })
 
-const firstBook = sequelize.define("first_book", {
+const firstBook = sequelize.define("first_books", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     page_foreword: {type: DataTypes.STRING, defaultValue: null},
     foreword_author: {type: DataTypes.STRING, defaultValue: null},
@@ -34,7 +34,7 @@ const firstBook = sequelize.define("first_book", {
     page_message: {type: DataTypes.STRING, defaultValue: null},
 })
 
-const secondBook = sequelize.define("second_book", {
+const secondBook = sequelize.define("second_books", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     page_foreword: {type: DataTypes.STRING, defaultValue: null},
     foreword_author: {type: DataTypes.STRING, defaultValue: null},
@@ -45,7 +45,7 @@ const secondBook = sequelize.define("second_book", {
     page_message: {type: DataTypes.STRING, defaultValue: null},
 })
 
-const thirdBook = sequelize.define("third_book", {
+const thirdBook = sequelize.define("third_books", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     page_foreword: {type: DataTypes.STRING, defaultValue: null},
     foreword_author: {type: DataTypes.STRING, defaultValue: null},
@@ -56,7 +56,7 @@ const thirdBook = sequelize.define("third_book", {
     page_message: {type: DataTypes.STRING, defaultValue: null},
 })
 
-const fourthBook = sequelize.define("fourth_book", {
+const fourthBook = sequelize.define("fourth_books", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     page_foreword: {type: DataTypes.STRING, defaultValue: null},
     foreword_author: {type: DataTypes.STRING, defaultValue: null},
