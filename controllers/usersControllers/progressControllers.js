@@ -31,7 +31,7 @@ class ProgressControllers {
         const progresses = await progress.findOne({where: {userId}})
             .then(res => {
                 if (!res) {
-                    return next(ApiError.badRequest('Данные о прогрессе не найдены'));
+                    return ApiError.badRequest('Данные о прогрессе не найдены');
                 }
                 const body = {
                     percent_progress: percentProgress,
