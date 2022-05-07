@@ -25,46 +25,46 @@ const progress = sequelize.define("progress", {
 
 const firstBook = sequelize.define("first_books", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    page_foreword: {type: DataTypes.STRING, defaultValue: null},
+    page_foreword: {type: DataTypes.TEXT, defaultValue: null},
     foreword_author: {type: DataTypes.STRING, defaultValue: null},
     page_chapter: {type: DataTypes.STRING, defaultValue: null},
     page_title: {type: DataTypes.STRING, defaultValue: null},
-    page_text: {type: DataTypes.STRING, defaultValue: null},
+    page_text: {type: DataTypes.TEXT, defaultValue: null},
     page_img: {type: DataTypes.STRING, defaultValue: null},
-    page_message: {type: DataTypes.STRING, defaultValue: null},
+    page_message: {type: DataTypes.TEXT, defaultValue: null},
 })
 
 const secondBook = sequelize.define("second_books", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    page_foreword: {type: DataTypes.STRING, defaultValue: null},
+    page_foreword: {type: DataTypes.TEXT, defaultValue: null},
     foreword_author: {type: DataTypes.STRING, defaultValue: null},
     page_chapter: {type: DataTypes.STRING, defaultValue: null},
     page_title: {type: DataTypes.STRING, defaultValue: null},
-    page_text: {type: DataTypes.STRING, defaultValue: null},
+    page_text: {type: DataTypes.TEXT, defaultValue: null},
     page_img: {type: DataTypes.STRING, defaultValue: null},
-    page_message: {type: DataTypes.STRING, defaultValue: null},
+    page_message: {type: DataTypes.TEXT, defaultValue: null},
 })
 
 const thirdBook = sequelize.define("third_books", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    page_foreword: {type: DataTypes.STRING, defaultValue: null},
+    page_foreword: {type: DataTypes.TEXT, defaultValue: null},
     foreword_author: {type: DataTypes.STRING, defaultValue: null},
     page_chapter: {type: DataTypes.STRING, defaultValue: null},
     page_title: {type: DataTypes.STRING, defaultValue: null},
-    page_text: {type: DataTypes.STRING, defaultValue: null},
+    page_text: {type: DataTypes.TEXT, defaultValue: null},
     page_img: {type: DataTypes.STRING, defaultValue: null},
-    page_message: {type: DataTypes.STRING, defaultValue: null},
+    page_message: {type: DataTypes.TEXT, defaultValue: null},
 })
 
 const fourthBook = sequelize.define("fourth_books", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    page_foreword: {type: DataTypes.STRING, defaultValue: null},
+    page_foreword: {type: DataTypes.TEXT, defaultValue: null},
     foreword_author: {type: DataTypes.STRING, defaultValue: null},
     page_chapter: {type: DataTypes.STRING, defaultValue: null},
     page_title: {type: DataTypes.STRING, defaultValue: null},
-    page_text: {type: DataTypes.STRING, defaultValue: null},
+    page_text: {type: DataTypes.TEXT, defaultValue: null},
     page_img: {type: DataTypes.STRING, defaultValue: null},
-    page_message: {type: DataTypes.STRING, defaultValue: null},
+    page_message: {type: DataTypes.TEXT, defaultValue: null},
 })
 
 users.hasOne(usersImage);

@@ -1,6 +1,6 @@
 const uuid = require("uuid");
 const ApiErrors = require('../../errors/ApiErrors');
-const {users, progress,} = require('../../models/models');
+const {users, progress, usersImage} = require('../../models/models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -18,6 +18,7 @@ class UsersControllers {
         const hashPassword = await bcrypt.hash(password, 5);
         const user = await users.create({email, password: hashPassword, full_name, position});
         const userProgress = await progress.create({userId: user.id});
+        const userImage = await usersImage.create({userId: user.id});
         const token = jwt.sign(
             {id: user.id, email, full_name, position},
             process.env.SECRET_KEY,

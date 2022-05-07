@@ -19,6 +19,8 @@ app.use(express.json());
 app.use(express.static(path.resolve(__dirname, "static")));
 app.use(fileUpload({}));
 app.use('/medya-api', router);
+
+//ERROR MIDDLEWARE
 app.use(errorHandler);
 
 const start = async () => {

@@ -27,7 +27,12 @@ class ProgressControllers {
         const pagesRead = +first_book_last_page + +second_book_last_page + +third_book_last_page + +fourth_book_last_page;
         const percentProgress = +pagesRead / +onePercent;
 
-        const progresses = await progress.findOne({where: {userId: userId}})
+        console.log("firstBookTotalPage: ", firstBookTotalPage)
+        console.log("secondBookTotalPage: ", secondBookTotalPage)
+        console.log("thirdBookTotalPage: ", thirdBookTotalPage)
+        console.log("fourthBookTotalPage: ", fourthBookTotalPage);
+
+        const progresses = await progress.findOne({where: {userId}})
             .then(res => {
                 if (!res) {
                     return ApiError.badRequest('Данные о прогрессе не найдены');
@@ -39,7 +44,7 @@ class ProgressControllers {
                     third_book_last_page,
                     fourth_book_last_page,
                 }
-                res.update(body);
+                return res.update(body);
             })
 
         return res.json(progresses);
