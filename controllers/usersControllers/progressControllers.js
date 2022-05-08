@@ -9,7 +9,7 @@ const ApiError = require('../../errors/ApiErrors');
 
 class ProgressControllers {
     putProgress = async (req, res, next) => {
-        const {userId} = req.params;
+        const {id} = req.user;
         const {
             first_book_last_page,
             second_book_last_page,
@@ -28,7 +28,7 @@ class ProgressControllers {
         const percentProgress = +pagesRead / +onePercent;
         //-------------------------------------------------------------------------------------------------------------------
 
-        const progresses = await progress.findOne({where: {userId}})
+        const progresses = await progress.findOne({where: {userId: id}})
             .then(res => {
                 if (!res) {
                     return ApiError.badRequest('Данные о прогрессе не найдены');
@@ -46,10 +46,10 @@ class ProgressControllers {
         return res.json(progresses);
     };
     getProgress = async (req, res, next) => {
-        const {userId} = req.params;
+        const {id} = req.user;
 
         const progresses = await progress.findOne({
-            where: {userId},
+            where: {userId: id},
         })
 
         return res.json(progresses);

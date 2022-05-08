@@ -1,4 +1,3 @@
-const uuid = require("uuid");
 const ApiErrors = require('../../errors/ApiErrors');
 const {users, progress, usersImage} = require('../../models/models');
 const bcrypt = require('bcrypt');
@@ -46,11 +45,10 @@ class UsersControllers {
         return res.json({token})
     };
     auth = async (req, res, next) => {
-        const {id} = req.query;
+        const {user} = req;
+        const token = generateJwt(user.id, user.email, user.full_name, user.position);
 
-        if (!id) {
-            return next(ApiErrors.badRequest("Не задан ID"));
-        }
+        return res.json({token});
     };
 }
 
