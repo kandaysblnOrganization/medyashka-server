@@ -4,6 +4,13 @@ const {users, progress, usersImage} = require('../../models/models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const generateJwt = (id, email, full_name, position) => {
+    return jwt.sign(
+        {id, email, full_name, position},
+        process.env.SECRET_KEY,
+        {expiresIn: "24h"},
+    );
+}
 
 class UsersControllers {
     registration = async (req, res, next) => {
@@ -19,11 +26,7 @@ class UsersControllers {
         const user = await users.create({email, password: hashPassword, full_name, position});
         const userProgress = await progress.create({userId: user.id});
         const userImage = await usersImage.create({userId: user.id});
-        const token = jwt.sign(
-            {id: user.id, email, full_name, position},
-            process.env.SECRET_KEY,
-            {expiresIn: "24h"}
-        );
+        const token = generateJwt(user.id, user.email, user.full_name, user.position)
 
         return res.json({token})
     };
