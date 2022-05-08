@@ -30,9 +30,21 @@ class UsersControllers {
 
         return res.json({token})
     };
-    authorization = async (req, res) => {
+    authorization = async (req, res, next) => {
+        const {email, password} = req.body;
+        const user = await users.findOne({where: {email}});
+        if (!user) {
+            return next(ApiErrors.internal("Указан неправильный E-Mail"));
+        }
 
-    }
+        let comparePassword = bcrypt.compareSync(password, user.password);
+        if (!comparePassword) {
+            return next(ApiErrors.internal('Указан неправильный пароль'));
+        }
+
+        const token = generateJwt(user.id, user.email, user.full_name, user.position)
+        return res.json({token})
+    };
     auth = async (req, res, next) => {
         const {id} = req.query;
 

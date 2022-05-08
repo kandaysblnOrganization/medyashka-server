@@ -8,7 +8,7 @@ const router = require('./routes');
 const path = require("path");
 
 //Middlewares
-const {errorHandler} = require('./middlewares');
+const {errorHandlerMiddleware} = require('./middlewares');
 
 const PORT = process.env.PORT;
 
@@ -21,7 +21,7 @@ app.use(fileUpload({}));
 app.use('/medya-api', router);
 
 //ERROR MIDDLEWARE
-app.use(errorHandler);
+app.use(errorHandlerMiddleware);
 
 const start = async () => {
     try {
