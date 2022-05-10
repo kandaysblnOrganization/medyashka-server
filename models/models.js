@@ -11,7 +11,7 @@ const users = sequelize.define("users", {
 
 const usersImage = sequelize.define(`users_image`, {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    avatar: {type: DataTypes.STRING, defaultValue: null},
+    avatar: {type: DataTypes.STRING, defaultValue: "default.png"},
 })
 
 const progress = sequelize.define("progress", {
