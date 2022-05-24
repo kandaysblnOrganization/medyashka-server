@@ -2,6 +2,6 @@ const Router = require('express');
 const router = new Router();
 const {secondBookControllers} = require('../../controllers');
 
-router.get('/second_book', secondBookControllers.getBook);
+router.get('/', secondBookControllers.getBook);
 
 module.exports = router;
