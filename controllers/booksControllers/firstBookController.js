@@ -13,7 +13,6 @@ class FirstBookController {
             const order = [
                 ["id", "ASC"]
             ];
-
             let book = await firstBook.findAndCountAll({limit, offset, order})
                 .then(res => {
                     if (!res) {
@@ -25,7 +24,6 @@ class FirstBookController {
 
                     return res;
                 })
-
             return res.json(book);
         } catch (err) {
             return next(ApiError.badRequest(err.message));

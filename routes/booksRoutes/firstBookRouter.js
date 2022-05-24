@@ -4,6 +4,6 @@ const {
     firstBookControllers
 } = require('../../controllers');
 
-router.get('/', firstBookControllers.getBook);
+router.get('/first_book', firstBookControllers.getBook);
 
 module.exports = router;
