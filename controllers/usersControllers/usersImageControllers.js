@@ -26,8 +26,6 @@ class UsersImageControllers {
 
         return res.json(userImage);
     };
-    getUserImage = async (req, res, next) => {
-    };
 }
 
 module.exports = new UsersImageControllers();
