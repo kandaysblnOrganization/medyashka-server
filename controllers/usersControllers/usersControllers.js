@@ -33,7 +33,7 @@ class UsersControllers {
         const {email, password} = req.body;
         const user = await users.findOne({where: {email}});
         if (!user) {
-            return next(ApiErrors.internal("Указан неправильный E-Mail"));
+            return next(ApiErrors.internal("E-Mail не зарегистрирован"));
         }
 
         let comparePassword = bcrypt.compareSync(password, user.password);
