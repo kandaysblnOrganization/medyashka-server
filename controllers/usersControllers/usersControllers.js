@@ -21,8 +21,18 @@ class UsersControllers {
         if (candidate) {
             return next(ApiErrors.badRequest("Пользователь с таким E-Mail уже существует"));
         }
+        let newPosition;
+        if (position >= 3 && position <= 7) {
+            newPosition = "Дошкольник";
+        } else if (position >= 8 && position <= 17) {
+            newPosition = "Школьник";
+        } else if (position > 17) {
+            newPosition = "Взрослый";
+        } else {
+            newPosition = "Ребенок";
+        }
         const hashPassword = await bcrypt.hash(password, 5);
-        const user = await users.create({email, password: hashPassword, full_name, position});
+        const user = await users.create({email, password: hashPassword, full_name, position: newPosition});
         const userProgress = await progress.create({userId: user.id});
         const userImage = await usersImage.create({userId: user.id});
         const token = generateJwt(user.id, user.email, user.full_name, user.position)
