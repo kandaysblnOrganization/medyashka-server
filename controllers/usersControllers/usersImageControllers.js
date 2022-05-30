@@ -26,6 +26,13 @@ class UsersImageControllers {
 
         return res.json(userImage);
     };
+
+    getUserImage = async (req, res, next) => {
+        const {id} = req.user;
+        const userImage = await usersImage.findOne({where: {userId: id}});
+
+        return res.json(userImage);
+    };
 }
 
 module.exports = new UsersImageControllers();
